@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">BMI Tracker</string>
+    <string name="new_entry">BMI Calculator</string>
+    <string name="history">BMI Trend</string>
+    <string name="report">BMI Report</string>
+    <string name="height">Height (cm)</string>
+    <string name="weight">Weight (kg)</string>
+    <string name="age">Age (years)</string>
+    <string name="gender">Gender</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="calculate">Calculate BMI</string>
+    <string name="view_trend">View trend</string>
+    <string name="calculate_again">New calculation</string>
+    <string name="language">Language</string>
+    <string name="english">English</string>
+    <string name="chinese">简体中文</string>
+    <string name="result_title">Body mass index</string>
+    <string name="result_hint">Enter your measurements to see your BMI and weight category.</string>
+    <string name="context_hint">Touch and hold the result to copy it.</string>
+    <string name="adult_reference">Adult reference · Hong Kong Centre for Health Protection</string>
+    <string name="child_reference">Ages 6–18 · Singapore Health Promotion Board</string>
+    <string name="no_reference">The supplied child chart covers ages 6–18.</string>
+    <string name="severe_warning">This BMI is in an extreme range on the child reference chart.</string>
+    <string name="underweight">Underweight</string>
+    <string name="normal">Normal range</string>
+    <string name="acceptable">Acceptable weight</string>
+    <string name="overweight">Overweight</string>
+    <string name="obese">Obese</string>
+    <string name="severe_under">Severely underweight</string>
+    <string name="severe_over">Severely overweight</string>
+    <string name="unavailable">Category unavailable</string>
+    <string name="invalid_height">Enter a height from 30 to 300 cm.</string>
+    <string name="invalid_weight">Enter a weight from 1 to 700 kg.</string>
+    <string name="invalid_age">Enter a whole age from 1 to 120.</string>
+    <string name="invalid_gender">Select a gender.</string>
+    <string name="copy">Copy BMI</string>
+    <string name="copied">BMI copied</string>
+    <string name="daily_latest">Latest result per day</string>
+    <string name="measurements">Saved measurements</string>
+    <string name="empty">Your saved BMI results will appear here.</string>
+    <string name="chart_description">%1$d saved days. Latest BMI %2$s.</string>
+    <string name="entry_value">BMI %1$s</string>
+    <string name="back">Back</string>
+</resources>

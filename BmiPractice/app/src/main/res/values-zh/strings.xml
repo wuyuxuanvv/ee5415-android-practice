@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">BMI 记录</string>
+    <string name="new_entry">BMI 计算</string>
+    <string name="history">BMI 趋势</string>
+    <string name="report">BMI 报告</string>
+    <string name="height">身高（厘米）</string>
+    <string name="weight">体重（公斤）</string>
+    <string name="age">年龄（岁）</string>
+    <string name="gender">性别</string>
+    <string name="male">男</string>
+    <string name="female">女</string>
+    <string name="calculate">计算 BMI</string>
+    <string name="view_trend">查看趋势</string>
+    <string name="calculate_again">重新计算</string>
+    <string name="language">语言</string>
+    <string name="english">English</string>
+    <string name="chinese">简体中文</string>
+    <string name="result_title">身体质量指数</string>
+    <string name="result_hint">填写测量数据，即可查看 BMI 和体重分类。</string>
+    <string name="context_hint">长按结果可复制。</string>
+    <string name="adult_reference">成人参考 · 香港卫生防护中心</string>
+    <string name="child_reference">6–18 岁参考 · 新加坡保健促进局</string>
+    <string name="no_reference">所提供的儿童参考表仅覆盖 6–18 岁。</string>
+    <string name="severe_warning">此 BMI 位于儿童参考表的极端范围。</string>
+    <string name="underweight">过轻</string>
+    <string name="normal">适中</string>
+    <string name="acceptable">体重适中</string>
+    <string name="overweight">过重</string>
+    <string name="obese">肥胖</string>
+    <string name="severe_under">严重过轻</string>
+    <string name="severe_over">严重过重</string>
+    <string name="unavailable">无适用分类</string>
+    <string name="invalid_height">请输入 30 至 300 厘米的身高。</string>
+    <string name="invalid_weight">请输入 1 至 700 公斤的体重。</string>
+    <string name="invalid_age">请输入 1 至 120 岁的整数年龄。</string>
+    <string name="invalid_gender">请选择性别。</string>
+    <string name="copy">复制 BMI</string>
+    <string name="copied">已复制 BMI</string>
+    <string name="daily_latest">每天仅保留最新结果</string>
+    <string name="measurements">已保存的记录</string>
+    <string name="empty">计算后，保存的 BMI 记录会显示在这里。</string>
+    <string name="chart_description">已保存 %1$d 天的记录。最新 BMI 为 %2$s。</string>
+    <string name="entry_value">BMI %1$s</string>
+    <string name="back">返回</string>
+</resources>

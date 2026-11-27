@@ -1,0 +1,44 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.practice.bmi'
+    compileSdk 36
+    buildToolsVersion '36.1.0'
+
+    defaultConfig {
+        applicationId 'com.practice.bmi'
+        minSdk 26
+        targetSdk 34
+        versionCode 1
+        versionName '1.0'
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    // 三套 ControllerFactory 使用同名类。每次构建只编译所选架构的源码目录。
+    flavorDimensions += 'architecture'
+    productFlavors {
+        mvp {
+            dimension 'architecture'
+            applicationIdSuffix '.mvp'
+        }
+        mvvm {
+            dimension 'architecture'
+            applicationIdSuffix '.mvvm'
+        }
+        mvi {
+            dimension 'architecture'
+            applicationIdSuffix '.mvi'
+        }
+    }
+}
+
+dependencies {
+    implementation 'androidx.activity:activity:1.10.1'
+    mvvmImplementation 'androidx.lifecycle:lifecycle-livedata-core:2.8.7'
+}
