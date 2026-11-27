@@ -38,7 +38,14 @@
 ## 5. 手动生成 APK 并找到文件
 
 1. 在 Android Studio 底部打开 **Terminal**，用 PowerShell 执行 `Get-Location`。确认路径是当前工程根目录，并且这里能找到 `gradlew.bat`。
-2. 按你的工程和版本运行表里的命令。看到 **BUILD SUCCESSFUL** 后，在资源管理器打开同一工程目录，按表里的相对路径找到 APK。
+2. 如果打包时报 `JAVA_HOME is not set`，先在同一个 PowerShell 窗口执行下面两行。第一行填 Android Studio 安装目录下的 `jbr`，第二行应显示 `True`。自定义安装位置举例 `D:\Android Studio Otter\jbr`。关闭窗口后，重新打开的 PowerShell 需要再设置一次。
+
+   ```powershell
+   $env:JAVA_HOME = 'C:\Program Files\Android\Android Studio\jbr'
+   Test-Path "$env:JAVA_HOME\bin\java.exe"
+   ```
+
+3. 按你的工程和版本运行表里的命令。看到 **BUILD SUCCESSFUL** 后，在资源管理器打开同一工程目录，按表里的相对路径找到 APK。
 
 | 要生成的 APK | PowerShell 命令 | 从工程根目录查找 APK |
 | --- | --- | --- |
