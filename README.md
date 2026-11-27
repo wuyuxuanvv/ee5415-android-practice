@@ -1,58 +1,65 @@
-# EE5415 Android 练习
+# 把 BMI 或计算器复制到空项目
 
-一个仓库包含两个独立的 Gradle 工程。解压 GitHub 的 ZIP 或克隆仓库后，用 Android Studio 的 **File → Open** 分别打开 [BmiPractice](BmiPractice/) 或 [CalculatorPractice](CalculatorPractice/)。选择包含 `settings.gradle` 的那一层目录。
+以下步骤用于在允许完整复制工程的场景下练习或迁移。两个项目分别打开，各自构建。
 
-## 实验室配置
+## 1. 准备原项目和空项目
 
-[EE5415 实验室初始化 PDF](docs/EE5415-Lab-Setup.pdf)包含 Android Studio、SDK 和 API 33 模拟器的安装步骤。
+1. 在仓库首页点 **Code → Download ZIP**，用 Windows 解压。在解压出来的目录里找到 [BmiPractice](BmiPractice/) 和 [CalculatorPractice](CalculatorPractice/)。
+2. 在 Android Studio 点 **New Project → Phone and Tablet → No Activity**。做 BMI 就把新工程命名为 `BmiCopy`，做计算器就命名为 `CalculatorCopy`。如果向导要求选择最低 SDK，选 **API 26**。记住 **Save location**，然后点 **Finish**。
+3. 工程创建后点 **File → Close Project**。用资源管理器打开刚才的保存位置，找到包含 `app` 文件夹和 `settings.gradle.kts`（或 `settings.gradle`）的那一层。下面称它为「新工程根目录」。
+4. 只在**刚创建的空项目**里移走以下模板内容，留出位置给原工程的文件。
+   - 新工程根目录的 `build.gradle.kts`、`settings.gradle.kts`，如果存在。
+   - 新工程 `app` 里的 `build.gradle.kts`，如果存在。
+   - 新工程的 `app/src` 整个目录。
+   - 如果下面复制时出现同名文件，选择 **替换目标中的文件**。
 
-| 项目 | 配置 |
-| --- | --- |
-| Android Studio | Otter 2025.2.1；实验室截图为 2025.2.1 Patch 1 |
-| 构建 | AGP 8.13.0、Gradle Wrapper 8.13、Java 17 源码级别 |
-| 本地 Gradle JDK | 可使用 Otter 自带的 JBR |
-| SDK Manager | Android SDK Platform 36、Android SDK Build-Tools 36.1.0 |
-| Device Manager | 实验室的 Android 13 / API 33 模拟器 |
-| 工程的 minSdk / targetSdk | 26 / 34 |
+## 2. 照搬 BMI 时，复制这些
 
-首次打开时等 Gradle Sync 完成，再选 API 33 模拟器并点 **Run**。需要联网下载 Gradle 和未缓存的依赖时，预留同步时间。API 36 是编译使用的 SDK，API 33 是安装应用的 Android 系统版本。实验室新建项目示例使用 API 24 作为最低版本。练习工程最低版本是 API 26，符合 API 33 模拟器的安装条件。
+1. 打开原来的 **`BmiPractice`** 文件夹。选中 `build.gradle`、`settings.gradle`、`gradle.properties`、`gradlew`、`gradlew.bat`，复制到 **`BmiCopy` 根目录**。
+2. 把原项目的整个 `gradle` 文件夹复制到 **`BmiCopy` 根目录**。确认能找到 `BmiCopy/gradle/wrapper/gradle-wrapper.jar` 和 `gradle-wrapper.properties`。
+3. 打开 **`BmiPractice/app`**，把里面的 `build.gradle` 文件和整个 `src` 文件夹复制到 **`BmiCopy/app`**。
+4. 打开 **`BmiCopy/app/src`** 检查。应该直接看到 `main`、`mvp`、`mvvm`、`mvi` 四个文件夹。继续打开 `main`，里面应有 `AndroidManifest.xml`、`java` 和 `res`。文件夹层级应为 `BmiCopy/app/src/main`。
 
-BMI 默认可以先选 `mvpDebug`。在 **View → Tool Windows → Build Variants** 选 `mvvmDebug` 或 `mviDebug` 可切换架构。三种版本的应用 ID 不同，各自有独立的本地记录。
+## 3. 照搬计算器时，复制这些
 
-也可以在任一工程目录的 Windows PowerShell 里构建。
+1. 打开原来的 **`CalculatorPractice`** 文件夹。选中 `build.gradle`、`settings.gradle`、`gradle.properties`、`gradlew`、`gradlew.bat`，复制到 **`CalculatorCopy` 根目录**。
+2. 把原项目的整个 `gradle` 文件夹复制到 **`CalculatorCopy` 根目录**。确认能找到 `CalculatorCopy/gradle/wrapper/gradle-wrapper.jar` 和 `gradle-wrapper.properties`。
+3. 打开 **`CalculatorPractice/app`**，把里面的 `build.gradle` 文件和整个 `src` 文件夹复制到 **`CalculatorCopy/app`**。
+4. 打开 **`CalculatorCopy/app/src/main`** 检查。这里应有 `AndroidManifest.xml`、`java` 和 `res`。两个 Java 文件 `MainActivity.java`、`Expression.java` 都在 `java/com/practice/calculator/` 下。
 
-```powershell
-.\gradlew.bat :app:assembleDebug
+## 4. 同步并运行
+
+1. 回到 Android Studio，点 **Open**，选你刚复制好的 **`BmiCopy`** 或 **`CalculatorCopy`** 根目录，再点 **OK**。
+2. 等 Gradle 同步完成。如果 IDE 没有自动同步，点 **File → Sync Project with Gradle Files**。Android Studio 会为当前电脑生成或更新 `local.properties`。
+3. 如果提示缺少 SDK，在 **Tools → SDK Manager** 安装 **Android SDK Platform 36** 和 **Android SDK Build-Tools 36.1.0**。安装后再同步。[实验室初始化 PDF](docs/EE5415-Lab-Setup.pdf)
+4. **BMI**：打开 **View → Tool Windows → Build Variants**，把 `app` 的 **Active Build Variant** 选成 `mvpDebug`。如果题目指定 MVVM 或 MVI，分别选 `mvvmDebug` 或 `mviDebug`。**计算器**：使用默认的 `debug`。
+5. 在顶部运行配置选 `app`，设备选 **API 33 模拟器**，再点绿色的 **Run ▶**。BMI 可以输入身高 170、体重 65、年龄 25，选一个性别，结果应为 **22.5**。计算器可以测试 **2 + 3 = 5**。
+
+## 5. 手动生成 APK 并找到文件
+
+1. 在 Android Studio 底部打开 **Terminal**，用 PowerShell 执行 `Get-Location`。确认路径是当前工程根目录，并且这里能找到 `gradlew.bat`。
+2. 按你的工程和版本运行表里的命令。看到 **BUILD SUCCESSFUL** 后，在资源管理器打开同一工程目录，按表里的相对路径找到 APK。
+
+| 要生成的 APK | PowerShell 命令 | 从工程根目录查找 APK |
+| --- | --- | --- |
+| BMI MVP | `.\gradlew.bat :app:assembleMvpDebug` | `app/build/outputs/apk/mvp/debug/app-mvp-debug.apk` |
+| BMI MVVM | `.\gradlew.bat :app:assembleMvvmDebug` | `app/build/outputs/apk/mvvm/debug/app-mvvm-debug.apk` |
+| BMI MVI | `.\gradlew.bat :app:assembleMviDebug` | `app/build/outputs/apk/mvi/debug/app-mvi-debug.apk` |
+| 计算器 | `.\gradlew.bat :app:assembleDebug` | `app/build/outputs/apk/debug/app-debug.apk` |
+
+## 6. 打包提交
+
+1. 在工程外新建一个文件夹，比如 `BMI_Submission`。在里面再新建一个 `BmiCopy` 文件夹，用来放**完整的可构建源代码工程**。
+2. 按第 2 节的清单，把你的最终 `BmiCopy` 里的根目录文件、`gradle`、`app/build.gradle` 和 `app/src` 复制到提交用的 `BmiCopy`，保留原来的目录层级。若提交计算器，用第 3 节的清单建立 `CalculatorCopy` 副本。
+3. 把第 5 节找到的最终 APK 复制到 `BMI_Submission`，和源代码工程文件夹并排放。题目规定提交多个版本时，放入对应的 APK。
+4. 如果按原 BMI 作业要求提交，再放入两张截图。一张截图显示输入页，另一张显示 BMI 结果页。最终目录示例如下。
+
+```text
+BMI_Submission/
+├── BmiCopy/                 完整的可构建源代码工程
+├── app-mvp-debug.apk        可安装的 APK
+├── bmi-input.png            输入页截图
+└── bmi-report.png           结果页截图
 ```
 
-APK 位于该工程的 `app/build/outputs/apk/`，BMI 会按架构分目录。
-
-## BMI 代码怎么改
-
-运行顺序是 **输入页 → `submit()` → 架构控制器 → `BmiModel.calculate()` → SQLite → 报告页**。
-
-| 要改的功能 | 入口 | 需要一起检查的地方 |
-| --- | --- | --- |
-| 身高、体重、年龄、性别等输入 | [MainActivity.java](BmiPractice/app/src/main/java/com/practice/bmi/MainActivity.java) 的 `showEntry()`、`readForm()`、`submit()` | 增删输入项时，同步调整 `BmiModel.Input`、输入校验和 Bundle 恢复。保留儿童分级时仍需提供年龄及性别。 |
-| BMI 公式、分级、严重提示 | [BmiModel.java](BmiPractice/app/src/main/java/com/practice/bmi/BmiModel.java) 的 `assess()` 与 `BOYS`／`GIRLS` | `showReport()` 控制颜色和标签。儿童表按 6 至 18 岁逐行存放，每行是前四个分类的上限。 |
-| 文案和中英文 | [英文 strings.xml](BmiPractice/app/src/main/res/values/strings.xml) 和 [中文 strings.xml](BmiPractice/app/src/main/res/values-zh/strings.xml) | 两份文件使用相同资源键。语言菜单及持久化位于 `onCreateOptionsMenu()`、`onOptionsItemSelected()`、`setLanguage()`。 |
-| 右上角菜单、报告长按菜单 | `onCreateOptionsMenu()` 与 `onCreateContextMenu()` | 删除某一项时，也删除对应的回调分支和未使用的菜单 ID。完整移除长按菜单时，还要删掉 `showReport()` 的 `registerForContextMenu()` 调用。 |
-| 横竖屏布局 | `place()` | 竖屏把卡片上下叠放，横屏左右并排。保留 `onSaveInstanceState()` 和 `restore()` 可继续保存旋转前的状态。 |
-| 自动回填 | [BmiStorage.java](BmiPractice/app/src/main/java/com/practice/bmi/BmiStorage.java) 的 `draft()`、`saveDraft()` | 如需去掉回填，移除 `onCreate()` 中读取 draft 的代码，以及 `onPause()`、`submit()` 的保存调用。Bundle 保存可以独立保留。 |
-| 历史和趋势图 | `showHistory()`、`BmiStorage.saveResult()`、[TrendChart.java](BmiPractice/app/src/main/java/com/practice/bmi/TrendChart.java) | 只隐藏折线图时移除 `showHistory()` 中创建和添加 `TrendChart` 的代码，日期列表仍可用。完整移除历史时还需去掉所有趋势入口、`HISTORY` 页面及导航，以及 `BmiModel.calculate()` 的保存调用。 |
-
-架构入口位于各自源码目录里的 `ControllerFactory.java`。 [MVP](BmiPractice/app/src/mvp/java/com/practice/bmi/ControllerFactory.java) 通过 Presenter 回调界面，[MVVM](BmiPractice/app/src/mvvm/java/com/practice/bmi/ControllerFactory.java) 通过 ViewModel 和 LiveData 传给界面，[MVI](BmiPractice/app/src/mvi/java/com/practice/bmi/ControllerFactory.java) 把提交转成 Intent，再由 Store 生成报告 State。三者都共用 `src/main` 的界面和 BMI 规则。要只保留一个构建变体时，可在 [app/build.gradle](BmiPractice/app/build.gradle) 删除其他架构的 flavor 条目。若移除 MVVM，也删除 `mvvmImplementation` 依赖声明。
-
-## 计算器代码怎么改
-
-运行顺序是 **点按键 → `press()` → 编辑算式／运行计算 → `render()`**。
-
-| 要改的功能 | 入口 | 需要一起检查的地方 |
-| --- | --- | --- |
-| 按键顺序、每行布局 | [MainActivity.java](CalculatorPractice/app/src/main/java/com/practice/calculator/MainActivity.java) 的 `createLayout()`、`addRow()` | 按钮文字同时传给 `press()`。改运算符显示时，检查 `appendOperator()` 的符号映射和 `readable()`。 |
-| 去掉退格或正负号 | `createLayout()` 的 `addRow()` | 从键盘移除对应文字，再删除 `press()` 的 `DEL` 或 `±` 分支及 `addRow()` 中相应的无障碍描述。 |
-| 去掉小数 | `createLayout()` 中的 `.` 键，以及 `appendNumber()` | 去掉输入入口和重复小数点检查即可限制输入。除法仍可能产生小数结果。 |
-| 运算优先级、除法精度 | [Expression.java](CalculatorPractice/app/src/main/java/com/practice/calculator/Expression.java) 的 `sum()`、`product()`、`number()` | `sum()` 处理加减，`product()` 处理乘除。精度由 `MathContext.DECIMAL64` 控制。除零提示在 `MainActivity.calculate()`。 |
-| 横竖屏显示和结果样式 | `createLayout()` 与 `render()` | `createLayout()` 控制布局，`render()` 选择当前算式、结果或错误。 `onSaveInstanceState()` 保存旋转前的显示状态。 |
-
-每次改完，跑一次原来的流程和改过的流程。比如计算器可用 `2 + 3 × 4 = 14`、`7 ÷ 0` 和旋转后的结果做检查。BMI 可用身高 170 cm、体重 65 kg、年龄 25 岁得到 BMI 22.5，再重新计算一次验证当天记录覆盖。
+5. 在资源管理器里右键 **`BMI_Submission` → 压缩为 ZIP 文件**（或 **发送到 → 压缩文件夹**）。打开生成的 ZIP 检查能看到 APK、源代码工程和题目要求的截图，再按提交页面要求上传。
