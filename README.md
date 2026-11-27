@@ -4,6 +4,8 @@
 
 ## 实验室配置
 
+[EE5415 实验室初始化 PDF](docs/EE5415-Lab-Setup.pdf)包含 Android Studio、SDK 和 API 33 模拟器的安装步骤。
+
 | 项目 | 配置 |
 | --- | --- |
 | Android Studio | Otter 2025.2.1；实验室截图为 2025.2.1 Patch 1 |
